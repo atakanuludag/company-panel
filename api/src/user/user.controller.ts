@@ -198,6 +198,17 @@ export class UserController {
   @Roles(UserRole.ADMIN)
   @Delete(':id')
   async delete(@Param() params: IdParamsDto) {
+    const user = await this.service.findUserById(params.id)
+    const roleIsAdmin = user.roles.some((r) => UserRole.ADMIN)
+    if (roleIsAdmin) {
+      const adminCount = await this.service.findAdminUserCount()
+      if (adminCount <= 1) {
+        throw new ExceptionHelper(
+          this.moduleMessage.LAST_ADMIN_USER_DELETE_DISABLED,
+          HttpStatus.BAD_REQUEST,
+        )
+      }
+    }
     await this.service.delete(params.id)
   }
 }

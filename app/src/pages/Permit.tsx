@@ -90,7 +90,7 @@ function EmployeePermit() {
       name: 'Aksiyon',
       button: true,
       cell: (row) => (
-        <Tooltip label={`Kaydı sil`}>
+        <Tooltip label={`Kaydı sil`} placement="bottom-start">
           <IconButton
             aria-label="Delete item"
             colorScheme="red"

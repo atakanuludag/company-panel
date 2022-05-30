@@ -4,6 +4,7 @@ import { Model, ObjectId } from 'mongoose'
 import { JwtService } from '@nestjs/jwt'
 import { IUser } from '../common/interfaces/user.interface'
 import { IUserEntity } from '../common/interfaces/user.interface'
+import { UserRole } from '../common/interfaces/enums'
 import { User, UserDocument } from './schemas/user.schema'
 import { UserDto } from './dto/user.dto'
 import { UpdateUserDto } from './dto/update-user.dto'
@@ -81,6 +82,17 @@ export class UserService {
   async findUser(userName: string): Promise<boolean> {
     try {
       return await this.serviceModel.exists({ userName })
+    } catch (err) {
+      throw new ExceptionHelper(
+        this.coreMessage.INTERNAL_SERVER_ERROR,
+        HttpStatus.INTERNAL_SERVER_ERROR,
+      )
+    }
+  }
+
+  async findAdminUserCount(): Promise<number> {
+    try {
+      return await this.serviceModel.countDocuments({ roles: [UserRole.ADMIN] })
     } catch (err) {
       throw new ExceptionHelper(
         this.coreMessage.INTERNAL_SERVER_ERROR,

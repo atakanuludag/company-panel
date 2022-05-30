@@ -86,7 +86,7 @@ function Employee() {
       name: 'Aksiyon',
       button: true,
       cell: (row) => (
-        <Tooltip label={`${row.userName} kaydını sil`}>
+        <Tooltip label={`${row.userName} kaydını sil`} placement="bottom-start">
           <IconButton
             aria-label="Delete item"
             colorScheme="red"
