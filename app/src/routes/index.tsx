@@ -3,6 +3,7 @@ import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom'
 import LayoutRouter from '@/routes/LayoutRouter'
 import RouteTitle from '@/routes/RouteTitle'
 import NotFound from '@/pages/404'
+import Error from '@/pages/Error'
 import Login from '@/pages/Login'
 import Dashboard from '@/pages/Dashboard'
 import Employee from '@/pages/Employee'
@@ -58,6 +59,7 @@ function Router() {
         </Route>
         <Route path="/login" element={<Login />} />
         <Route path="/404" element={<NotFound />} />
+        <Route path="/error" element={<Error />} />
         <Route path="*" element={<Navigate to="/404" replace />} />
       </Routes>
     </BrowserRouter>

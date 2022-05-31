@@ -14,8 +14,8 @@ const defaultOptions: AxiosRequestConfig = {
 const instance = axios.create(defaultOptions)
 
 export const axiosResponseInterceptors = (
-  toast: any,
-  logoutUserStore: () => any,
+  toast: Function,
+  logoutUserStore: () => void,
 ) => {
   instance.interceptors.response.use(
     (response) => {
@@ -31,6 +31,8 @@ export const axiosResponseInterceptors = (
           title: `Ağ hatası - API servisin çalıştığından emin olun. ${error.message}`,
           status: 'error',
         })
+        if (window.location.href.indexOf('/error') === -1)
+          window.location.href = '/error'
       }
 
       if (status === 401) {
