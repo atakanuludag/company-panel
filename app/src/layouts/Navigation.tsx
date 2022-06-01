@@ -19,12 +19,13 @@ interface LinkItemProps {
   url: string
   roles: UserRole[]
 }
+
 const LinkItems: Array<LinkItemProps> = [
   {
     name: 'Dashboard',
     icon: MdDashboard,
     url: '/',
-    roles: [UserRole.ADMIN, UserRole.EMPLOYEE],
+    roles: [],
   },
   {
     name: 'Kullanıcılar',
@@ -48,11 +49,15 @@ interface SidebarProps extends BoxProps {
 const Navigation = ({ onClose, ...rest }: SidebarProps) => {
   const { userStore } = useStoreUser()
   const { roles } = userStore
-  console.log('roles', roles)
 
   const items = !roles
     ? []
-    : LinkItems.filter((l) => roles.some((r: UserRole) => l.roles.includes(r)))
+    : LinkItems.filter(
+        (l) =>
+          roles.some((r: UserRole) => l.roles.includes(r)) ||
+          l.roles.length <= 0 ||
+          typeof l.roles === 'undefined',
+      )
 
   //Todo: burayada loading ekleyebiliriz. roles daha boşken menüler gözükmüyor çünkü.
   return (

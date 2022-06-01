@@ -1,5 +1,5 @@
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom'
-
+import { UserRole } from '@/models/enums'
 import LayoutRouter from '@/routes/LayoutRouter'
 import RouteTitle from '@/routes/RouteTitle'
 import NotFound from '@/pages/404'
@@ -27,7 +27,11 @@ function Router() {
           <Route
             path="/employee"
             element={
-              <RouteTitle title="Personeller">
+              <RouteTitle
+                title="Personeller"
+                roleGuard
+                roles={[UserRole.ADMIN]}
+              >
                 <Employee />
               </RouteTitle>
             }
@@ -35,7 +39,11 @@ function Router() {
           <Route
             path="/permit"
             element={
-              <RouteTitle title="Personel İzinleri">
+              <RouteTitle
+                title="Personel İzinleri"
+                roleGuard
+                roles={[UserRole.ADMIN]}
+              >
                 <Permit />
               </RouteTitle>
             }
@@ -51,7 +59,11 @@ function Router() {
           <Route
             path="/users"
             element={
-              <RouteTitle title="Kullanıcılar">
+              <RouteTitle
+                title="Kullanıcılar"
+                roleGuard
+                roles={[UserRole.ADMIN]}
+              >
                 <Users />
               </RouteTitle>
             }
