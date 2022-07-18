@@ -12,6 +12,7 @@ import { UserRole } from '@/models/enums'
 import NavigationItem from '@/layouts/NavigationItem'
 import Logo from '@/components/Logo'
 import useStoreUser from '@/hooks/useStoreUser'
+import useLocales from '@/hooks/useLocale'
 
 interface LinkItemProps {
   name: string
@@ -20,35 +21,42 @@ interface LinkItemProps {
   roles: UserRole[]
 }
 
-const LinkItems: Array<LinkItemProps> = [
-  {
-    name: 'Dashboard',
-    icon: MdDashboard,
-    url: '/',
-    roles: [],
-  },
-  {
-    name: 'Kullanıcılar',
-    icon: FaUsers,
-    url: '/users',
-    roles: [UserRole.ADMIN],
-  },
-  {
-    name: 'Personeller',
-    icon: MdSupervisedUserCircle,
-    url: '/employee',
-    roles: [UserRole.ADMIN],
-  },
-  { name: 'İzinler', icon: MdToday, url: '/permit', roles: [UserRole.ADMIN] },
-]
-
 interface SidebarProps extends BoxProps {
   onClose: () => void
 }
 
 const Navigation = ({ onClose, ...rest }: SidebarProps) => {
+  const { translate } = useLocales('navigation')
+
   const { userStore } = useStoreUser()
   const { roles } = userStore
+
+  const LinkItems: Array<LinkItemProps> = [
+    {
+      name: translate('dashboard'),
+      icon: MdDashboard,
+      url: '/',
+      roles: [],
+    },
+    {
+      name: translate('users'),
+      icon: FaUsers,
+      url: '/users',
+      roles: [UserRole.ADMIN],
+    },
+    {
+      name: translate('employees'),
+      icon: MdSupervisedUserCircle,
+      url: '/employee',
+      roles: [UserRole.ADMIN],
+    },
+    {
+      name: translate('permits'),
+      icon: MdToday,
+      url: '/permit',
+      roles: [UserRole.ADMIN],
+    },
+  ]
 
   const items = !roles
     ? []

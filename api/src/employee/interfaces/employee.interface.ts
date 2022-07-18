@@ -10,4 +10,6 @@ export interface IEmployee extends Document {
   readonly startingDate: Date
   readonly endDate: Date | null
   readonly gender: Gender
+  readonly remainingPermitDays: number
+  readonly totalPermitDays: number
 }

@@ -98,10 +98,14 @@ function WeatherHeader() {
             alignContent="center"
             alignItems="center"
           >
-            {getWeatherIcon(data?.icon, '50px')}
-            <Text fontSize="2xl">
-              {data?.description} {`${data?.temp.toFixed(0)}°C`}
-            </Text>
+            {data && (
+              <>
+                {getWeatherIcon(data?.icon, '50px')}
+                <Text fontSize="2xl">
+                  {data?.description} {`${data?.temp.toFixed(0)}°C`}
+                </Text>
+              </>
+            )}
           </Box>
         </PopoverBody>
       </PopoverContent>

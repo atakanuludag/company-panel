@@ -17,11 +17,14 @@ import {
 import { useFormik } from 'formik'
 import * as Yup from 'yup'
 import { useNavigate } from 'react-router-dom'
+import LanguageSelect from '@/components/header/LanguageSelect'
 import ILoginForm from '@/models/ILoginForm'
 import UserService from '@/services/UserService'
 import useStoreUser from '@/hooks/useStoreUser'
+import useLocales from '@/hooks/useLocale'
 
 function Login() {
+  const { translate } = useLocales()
   const navigate = useNavigate()
   const toast = useToast()
   const { userStore, setLoginStore } = useStoreUser()
@@ -81,13 +84,20 @@ function Login() {
   return (
     <Flex
       minH={'100vh'}
+      direction="column"
       align={'center'}
       justify={'center'}
       bg={useColorModeValue('gray.50', 'gray.800')}
     >
       <Stack spacing={8} mx={'auto'} maxW={'lg'} py={12} px={6}>
+        <Box position="fixed" top="1" right="1" padding="5">
+          <LanguageSelect />
+        </Box>
+
         <Stack align={'center'}>
-          <Heading fontSize={'4xl'}>Hesabınıza giriş yapınız</Heading>
+          <Heading fontSize={'4xl'} textAlign="center">
+            {translate('login_text')}
+          </Heading>
           <Text fontSize={'lg'} color={'gray.600'}>
             Company Panel
           </Text>
@@ -104,7 +114,9 @@ function Login() {
                 id="userName"
                 isInvalid={errors.username ? touched.username : false}
               >
-                <FormLabel htmlFor="username">Kullanıcı Adı</FormLabel>
+                <FormLabel htmlFor="username">
+                  {translate('username')}
+                </FormLabel>
                 <Input
                   id="username"
                   type="text"
@@ -118,7 +130,9 @@ function Login() {
                 id="password"
                 isInvalid={errors.password ? touched.password : false}
               >
-                <FormLabel htmlFor="password">Şifre</FormLabel>
+                <FormLabel htmlFor="password">
+                  {translate('password')}
+                </FormLabel>
                 <Input
                   id="password"
                   type="password"
@@ -134,7 +148,7 @@ function Login() {
                   align={'start'}
                   justify={'space-between'}
                 >
-                  <Checkbox>Beni hatırla</Checkbox>
+                  <Checkbox>{translate('remember_me')}</Checkbox>
                 </Stack>
                 <Button
                   type="submit"
@@ -144,9 +158,9 @@ function Login() {
                     bg: 'blue.500',
                   }}
                   isLoading={isSubmitting}
-                  loadingText="Bekleyiniz..."
+                  loadingText={translate('loading')}
                 >
-                  Giriş
+                  {translate('login')}
                 </Button>
               </Stack>
             </form>

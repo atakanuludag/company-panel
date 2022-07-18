@@ -32,6 +32,14 @@ export class Employee {
   @Prop({ type: SchemaTypes.Mixed, required: true, enum: Gender })
   gender: Gender
 
+  // Virtual;
+  @Prop({ virtual: true })
+  remainingPermitDays: number
+
+  // Virtual;
+  @Prop({ virtual: true })
+  totalPermitDays: number
+
   //personellerin izin bilgileri permit tablosunda. personelin işe giriş tarihine göre yıllık iznini hesaplayıp sahip olduğu izin sayısını yazdırabiliriz.
 }
 

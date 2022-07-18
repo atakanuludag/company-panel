@@ -108,36 +108,36 @@ export class WeatherService {
     }
   }
 
-  async getOpenWeatherMapIconToBase64(icon: string): Promise<string | null> {
-    try {
-      const res = await new Promise<string | null>((resolve, reject) =>
-        this.httpService
-          .get(`https://openweathermap.org/img/wn/${icon}@4x.png`, {
-            headers: {},
-            responseType: 'arraybuffer',
-          })
-          .pipe()
-          .subscribe((res) => {
-            if (!res.data) reject(null)
-            else {
-              const base64 =
-                'data:' +
-                res.headers['content-type'] +
-                ';base64,' +
-                Buffer.from(res.data).toString('base64')
-              resolve(base64)
-            }
-          }),
-      )
+  // async getOpenWeatherMapIconToBase64(icon: string): Promise<string | null> {
+  //   try {
+  //     const res = await new Promise<string | null>((resolve, reject) =>
+  //       this.httpService
+  //         .get(`https://openweathermap.org/img/wn/${icon}@4x.png`, {
+  //           headers: {},
+  //           responseType: 'arraybuffer',
+  //         })
+  //         .pipe()
+  //         .subscribe((res) => {
+  //           if (!res.data) reject(null)
+  //           else {
+  //             const base64 =
+  //               'data:' +
+  //               res.headers['content-type'] +
+  //               ';base64,' +
+  //               Buffer.from(res.data).toString('base64')
+  //             resolve(base64)
+  //           }
+  //         }),
+  //     )
 
-      return res
-    } catch (err) {
-      throw new ExceptionHelper(
-        this.coreMessage.INTERNAL_SERVER_ERROR,
-        HttpStatus.INTERNAL_SERVER_ERROR,
-      )
-    }
-  }
+  //     return res
+  //   } catch (err) {
+  //     throw new ExceptionHelper(
+  //       this.coreMessage.INTERNAL_SERVER_ERROR,
+  //       HttpStatus.INTERNAL_SERVER_ERROR,
+  //     )
+  //   }
+  // }
 
   async getOpenWeatherMapApi(
     cityId: string | number,
@@ -151,7 +151,7 @@ export class WeatherService {
       }
 
       const searchParams = new URLSearchParams(queries)
-      let res = await new Promise<IOpenWeatherMap | null>((resolve, reject) =>
+      return await new Promise<IOpenWeatherMap | null>((resolve, reject) =>
         this.httpService
           .get(
             `https://api.openweathermap.org/data/2.5/weather?${searchParams.toString()}`,
@@ -160,16 +160,17 @@ export class WeatherService {
             },
           )
           .pipe()
-          .subscribe(({ data }) => {
-            if (!data) reject(null)
-            else resolve(data)
+          .subscribe({
+            next: ({ data }) => {
+              if (!data) resolve(null)
+              resolve(data)
+            },
+            error: () => resolve(null),
           }),
       )
 
-      const icon = await this.getOpenWeatherMapIconToBase64(res.weather[0].icon)
-      res.weather[0].icon = icon
-
-      return res
+      // const icon = await this.getOpenWeatherMapIconToBase64(res.weather[0].icon)
+      // res.weather[0].icon = icon
     } catch (err) {
       throw new ExceptionHelper(
         this.coreMessage.INTERNAL_SERVER_ERROR,

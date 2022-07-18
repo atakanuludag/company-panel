@@ -120,9 +120,12 @@ export class ExchangeRateService {
             headers: {},
           })
           .pipe()
-          .subscribe(({ data }) => {
-            if (!data) reject(null)
-            else resolve(data)
+          .subscribe({
+            next: ({ data }) => {
+              if (!data) resolve(null)
+              resolve(data)
+            },
+            error: () => resolve(null),
           }),
       )
 

@@ -15,7 +15,9 @@
       "@/routes/*": ["routes/*"],
       "@/store": ["store"],
       "@/store/*": ["store/*"],
-      "@/utils/*": ["utils/*"]
+      "@/utils/*": ["utils/*"],
+      "@/locales/*": ["locales/*"],
+      "@/locales": ["locales"]
     }
   }
 }

@@ -9,6 +9,7 @@ import App from './App'
 import reportWebVitals from './reportWebVitals'
 import redux from '@/store'
 import Chakra from './Chakra'
+import '@/locales'
 
 registerLocale('tr', tr)
 

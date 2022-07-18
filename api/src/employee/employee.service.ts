@@ -16,6 +16,8 @@ import { EmployeePermitDto } from './dto/employee-permit.dto'
 import { ExceptionHelper } from '../common/helpers/exception.helper'
 import { CoreMessage } from '../common/messages/core.message'
 
+import { differenceInYears } from 'date-fns'
+
 @Injectable()
 export class EmployeeService {
   constructor(
@@ -91,7 +93,25 @@ export class EmployeeService {
 
   async getItemById(_id: ObjectId): Promise<IEmployee> {
     try {
-      return await this.employeeModel.findOne({ _id }).exec()
+      let item = await this.employeeModel.findOne({ _id }).exec()
+      const startingDate = item.startingDate
+      const diff = differenceInYears(new Date(), new Date(startingDate))
+      const permitItems = await this.getPermitItemsByEmployeeId(_id)
+      const totalPermitDays = permitItems.reduce((acc, permit) => {
+        return acc + permit.totalDays
+      }, 0)
+
+      /*
+ Bir yıldan beş yıla kadar (beş yıl dahil) olanlara ondört günden,
+ Beş yıldan fazla onbeş yıldan az olanlara yirmi günden,
+ Onbeş yıl (dahil) ve daha fazla olanlara yirmialtı günden az olamaz. (Ek cümle: 10/9/2014-6552/5 md.)
+      */
+
+      return {
+        ...item.toJSON(),
+        remainingPermitDays: 0,
+        totalPermitDays,
+      } as any
     } catch (err) {
       throw new ExceptionHelper(
         this.coreMessage.BAD_REQUEST,

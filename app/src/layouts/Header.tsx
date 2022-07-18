@@ -15,12 +15,15 @@ import {
   MenuItem,
   MenuList,
   Spinner,
+  Image,
 } from '@chakra-ui/react'
 import { FiMenu, FiChevronDown } from 'react-icons/fi'
 import Logo from '@/components/Logo'
 import ThemeToggle from '@/components/header/ThemeToggle'
 import ExchangeRate from '@/components/header/ExchangeRate'
 import Weather from '@/components/header/Weather'
+import LanguageSelect from '@/components/header/LanguageSelect'
+import useLocales from '@/hooks/useLocale'
 import useStoreUser from '@/hooks/useStoreUser'
 import useStoreRouterTitle from '@/hooks/useStoreRouterTitle'
 
@@ -28,6 +31,8 @@ interface MobileProps extends FlexProps {
   onOpen: () => void
 }
 const Header = ({ onOpen, ...rest }: MobileProps) => {
+  const { translate } = useLocales()
+
   const navigate = useNavigate()
   const { logoutUserStore, userStore } = useStoreUser()
   const { routerTitleStore } = useStoreRouterTitle()
@@ -74,6 +79,7 @@ const Header = ({ onOpen, ...rest }: MobileProps) => {
         <ThemeToggle />
         <ExchangeRate />
         <Weather />
+        <LanguageSelect />
         <Flex alignItems={'center'}>
           <Menu>
             <MenuButton
@@ -115,10 +121,13 @@ const Header = ({ onOpen, ...rest }: MobileProps) => {
               borderColor={useColorModeValue('gray.200', 'gray.700')}
             >
               <MenuItem as={RouterLink} to="/my-profile">
-                Profil
+                {translate('my_profile')}
               </MenuItem>
               <MenuDivider />
-              <MenuItem onClick={handleLogoutButton}>Çıkış Yap</MenuItem>
+              <MenuItem onClick={handleLogoutButton}>
+                {' '}
+                {translate('logout')}
+              </MenuItem>
             </MenuList>
           </Menu>
         </Flex>
