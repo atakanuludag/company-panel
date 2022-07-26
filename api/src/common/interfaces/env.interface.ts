@@ -11,4 +11,5 @@ export interface IEnv {
   OPEN_WEATHER_MAP_LANG: string
   OPEN_WEATHER_MAP_UNITS: string
   WEATHER_UPDATE_MIN: number
+  GOOGLE_CALENDAR_API_KEY: string
 }
