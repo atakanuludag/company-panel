@@ -42,7 +42,7 @@ async function bootstrap() {
   app.setGlobalPrefix(apiPrefix)
   app.useGlobalPipes(new ValidationPipe())
   app.enableCors()
-  await app.listen(apiPort)
+  await app.listen(process.env.PORT || apiPort)
   const appUrl = await app.getUrl()
   console.log(`Application is running on: ${appUrl}`)
   console.log(`Swagger: ${appUrl}/${swaggerUrl}`)
