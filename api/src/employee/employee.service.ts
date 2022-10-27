@@ -144,7 +144,8 @@ export class EmployeeService {
 
   async findTcNumber(tcNumber: string): Promise<boolean> {
     try {
-      return await this.employeeModel.exists({ tcNumber })
+      const exists = await this.employeeModel.exists({ tcNumber })
+      return !exists ? false : true
     } catch (err) {
       throw new ExceptionHelper(
         this.coreMessage.INTERNAL_SERVER_ERROR,

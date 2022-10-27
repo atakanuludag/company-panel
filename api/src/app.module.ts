@@ -25,8 +25,6 @@ import { WeatherModule } from './weather/weather.module'
         uri: configService.get<string>('MONGODB_URI'),
         useNewUrlParser: true,
         useUnifiedTopology: true,
-        useCreateIndex: true,
-        useFindAndModify: false,
         socketTimeoutMS: 0,
         connectTimeoutMS: 0,
       }),

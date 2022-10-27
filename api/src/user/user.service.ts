@@ -81,7 +81,8 @@ export class UserService {
 
   async findUser(userName: string): Promise<boolean> {
     try {
-      return await this.serviceModel.exists({ userName })
+      const exists = await this.serviceModel.exists({ userName })
+      return !exists ? false : true
     } catch (err) {
       throw new ExceptionHelper(
         this.coreMessage.INTERNAL_SERVER_ERROR,
