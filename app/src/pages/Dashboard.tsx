@@ -1,4 +1,4 @@
-import { Box, SimpleGrid } from '@chakra-ui/react'
+import { Box, SimpleGrid, useColorModeValue } from '@chakra-ui/react'
 import { BsPerson } from 'react-icons/bs'
 import { FiServer } from 'react-icons/fi'
 import {
@@ -12,6 +12,9 @@ import StatsCard from '@/components/dashboard/StatsCard'
 import ExchangeRateCard from '@/components/dashboard/ExchangeRateCard'
 import useExchangeRateQuery from '@/hooks/queries/useExchangeRateQuery'
 import { DovizType } from '@/models/IExchangeRate'
+
+import FullCalendar from '@fullcalendar/react' // must go before plugins
+import dayGridPlugin from '@fullcalendar/daygrid' // a plugin!
 
 export default function Dashboard() {
   const exchangeRate = useExchangeRateQuery()
@@ -72,6 +75,38 @@ export default function Dashboard() {
           loading={true}
         />
       </SimpleGrid>
+
+      <Box
+        px={{ base: 2, md: 4 }}
+        py={'5'}
+        mt={'10'}
+        shadow={'xl'}
+        border={'1px solid'}
+        borderColor={useColorModeValue('gray.200', 'gray.700')}
+        backgroundColor={useColorModeValue('white', 'gray.900')}
+        rounded={'lg'}
+      >
+        <FullCalendar
+          plugins={[dayGridPlugin]}
+          initialView="dayGridMonth"
+          locale="tr"
+          firstDay={1}
+          eventColor="#000"
+          eventBackgroundColor="#000"
+          eventTextColor="#fff"
+          eventBorderColor="red"
+          buttonText={{
+            today: 'Bugün',
+            day: 'gün',
+            month: 'ay',
+            week: 'hafta',
+            next: '>',
+            prev: '<',
+            nextYear: 'Sonraki Yıl',
+            prevYear: 'Önceki Yıl',
+          }}
+        />
+      </Box>
     </Box>
   )
 }

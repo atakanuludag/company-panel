@@ -48,7 +48,7 @@ function HeaderExchangeRateCard({
       minHeight="90px"
     >
       <Box display="flex" alignItems="center" flexDirection="column">
-        <StatLabel fontWeight="bold" fontSize="sm" isTruncated>
+        <StatLabel fontWeight="bold" fontSize="sm" noOfLines={1}>
           {title}
         </StatLabel>
         {loading ? (
