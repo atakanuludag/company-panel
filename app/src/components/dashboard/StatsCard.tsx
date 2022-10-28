@@ -29,7 +29,7 @@ export default function StatsCard({ title, value, icon, loading }: IStatsCard) {
     >
       <Flex justifyContent={'space-between'}>
         <Box pl={{ base: 2, md: 4 }}>
-          <StatLabel fontWeight="bold" fontSize="lg" isTruncated>
+          <StatLabel fontWeight="bold" fontSize="lg" noOfLines={1}>
             {title}
           </StatLabel>
           {loading ? (

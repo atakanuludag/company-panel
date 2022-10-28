@@ -23,7 +23,7 @@ export const axiosResponseInterceptors = (
       return response
     },
     (error: AxiosError) => {
-      const data: IErrorResponse = error.response?.data
+      const data: IErrorResponse = error.response?.data as any
       const status = error.response?.status
 
       if (error.message === 'Network Error' && !error.response) {
