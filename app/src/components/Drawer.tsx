@@ -8,7 +8,6 @@ import {
   DrawerFooter,
   Button,
   Spinner,
-  Box,
 } from '@chakra-ui/react'
 import styled from '@emotion/styled'
 import useStoreDrawer from '@/hooks/useStoreDrawer'

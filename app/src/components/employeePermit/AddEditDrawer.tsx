@@ -64,7 +64,7 @@ const AddEditDrawer = ({
   }
 
   const getInitialValues = () =>
-    drawerStore.type === DrawerType.Update && data ? data : initialValues //todo: burası düzenlenebilir. çünkü data propsu boş gelebilir.
+    drawerStore.type === DrawerType.Update && data ? data : initialValues
 
   const validationSchema = Yup.object().shape({
     employee: Yup.string()
@@ -141,7 +141,7 @@ const AddEditDrawer = ({
     },
   })
 
-  //edit tarafında burası çalışıyor. data propsu dolu geliyorsa;
+  //** Edit tarafında burası çalışıyor. data propsu dolu geliyorsa;
   useEffect(() => {
     const getEmployee = async (data: IEmployeePermitForm) => {
       const permitItems = await EmployeeService.getPermitItemsByEmployeeId(
@@ -269,8 +269,10 @@ const AddEditDrawer = ({
           onInputChange={(search, actionMeta) => setEmployeeSearch(search)}
           onChange={employeeInputOnChange}
           onBlur={(e) => handleBlur(e)}
+          noOptionsMessage={() => 'Aramanızı genişletin. Veri bulunamadı.'}
         />
         <Datepicker
+          applyHolidays
           selectsStart
           id="startDate"
           formLabel="İzin Başlangıç Tarihi (*)"
@@ -289,6 +291,7 @@ const AddEditDrawer = ({
           excludeDates={excludeDates}
         />
         <Datepicker
+          applyHolidays
           selectsEnd
           id="endDate"
           formLabel="İzin Bitiş Tarihi (*)"

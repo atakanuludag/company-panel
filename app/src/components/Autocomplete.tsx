@@ -6,8 +6,9 @@ import {
   ActionMeta,
 } from 'chakra-react-select'
 import AutocompleteItem from '@/models/AutocompleteItem'
+import type { Props } from 'react-select'
 
-interface IAutocomplete {
+interface IAutocomplete extends Props<any> {
   loading?: boolean
   placeholder?: string
   id: string

@@ -1,4 +1,4 @@
-import { ChangeEvent, MouseEventHandler, useState, MouseEvent } from 'react'
+import { ChangeEvent, useState, MouseEvent } from 'react'
 import {
   FormControl,
   FormLabel,

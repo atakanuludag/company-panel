@@ -15,7 +15,6 @@ import {
   MenuItem,
   MenuList,
   Spinner,
-  Image,
 } from '@chakra-ui/react'
 import { FiMenu, FiChevronDown } from 'react-icons/fi'
 import Logo from '@/components/Logo'

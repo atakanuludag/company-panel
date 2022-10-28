@@ -17,13 +17,12 @@ export class AppService {
   private googleCalendarApiKey = this.configService.get<string>(
     'GOOGLE_CALENDAR_API_KEY',
   )
-
   async getGoogleApiCalendarHolidays(): Promise<IGoogleCalendarApi> {
     try {
       return await new Promise<IGoogleCalendarApi | null>((resolve, reject) =>
         this.httpService
           .get(
-            `https://www.googleapis.com/calendar/v3/calendars/tr.turkish%23holiday@group.v.calendar.google.com/events?key=${this.googleCalendarApiKey}`,
+            `https://www.googleapis.com/calendar/v3/calendars/tr.turkish.official%23holiday%40group.v.calendar.google.com/events?key=${this.googleCalendarApiKey}`,
           )
           .pipe()
           .subscribe({

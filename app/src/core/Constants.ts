@@ -6,6 +6,7 @@ const QUERY_NAMES = {
   USER: 'user',
   EXCHANGE_RATE: 'exchange-rate',
   WEATHER: 'weather',
+  HOLIDAYS_CALENDAR: 'holidays-calendar',
 }
 
 const LS_AUTH: ILocalStorage = {
