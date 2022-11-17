@@ -7,7 +7,7 @@ import {
   IsDate,
 } from 'class-validator'
 import { Type } from 'class-transformer'
-import { Gender } from '../../common/interfaces/enums'
+import { Gender } from '@/common/interfaces/enums'
 
 export class EmployeeDto {
   @ApiProperty({

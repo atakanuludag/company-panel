@@ -4,12 +4,12 @@ import { InjectModel } from '@nestjs/mongoose'
 import { Model } from 'mongoose'
 import { differenceInMinutes } from 'date-fns'
 import { HttpService } from '@nestjs/axios'
-import { Weather, WeatherDocument } from './schemas/weather.schema'
-import { ExceptionHelper } from '../common/helpers/exception.helper'
-import { CoreMessage } from '../common/messages/core.message'
-import { IWeather } from './interfaces/weather.interface'
-import { IOpenWeatherMap } from './interfaces/openweathermap-api.interface'
-import { IEnv } from '../common/interfaces/env.interface'
+import { Weather, WeatherDocument } from '@/weather/schemas/weather.schema'
+import { ExceptionHelper } from '@/common/helpers/exception.helper'
+import { CoreMessage } from '@/common/messages/core.message'
+import { IWeather } from '@/weather/interfaces/weather.interface'
+import { IOpenWeatherMap } from '@/weather/interfaces/openweathermap-api.interface'
+import { IEnv } from '@/common/interfaces/env.interface'
 
 @Injectable()
 export class WeatherService {

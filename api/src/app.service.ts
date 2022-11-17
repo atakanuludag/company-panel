@@ -1,10 +1,10 @@
 import { HttpStatus, Injectable } from '@nestjs/common'
 import { HttpService } from '@nestjs/axios'
 import { ConfigService } from '@nestjs/config'
-import { ExceptionHelper } from './common/helpers/exception.helper'
-import { CoreMessage } from './common/messages/core.message'
-import { IEnv } from './common/interfaces/env.interface'
-import { IGoogleCalendarApi } from './common/interfaces/google-calendar.interface'
+import { ExceptionHelper } from '@/common/helpers/exception.helper'
+import { CoreMessage } from '@/common/messages/core.message'
+import { IEnv } from '@/common/interfaces/env.interface'
+import { IGoogleCalendarApi } from '@/common/interfaces/google-calendar.interface'
 
 @Injectable()
 export class AppService {

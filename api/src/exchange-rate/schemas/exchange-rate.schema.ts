@@ -1,6 +1,6 @@
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose'
 import { Document, SchemaTypes } from 'mongoose'
-import { ExhangeRateType } from '../interfaces/enums'
+import { ExhangeRateType } from '@/exchange-rate/interfaces/enums'
 
 export type ExchangeRateDocument = ExchangeRate & Document & { updatedAt: Date }
 

@@ -3,19 +3,19 @@ import { ConfigModule, ConfigService } from '@nestjs/config'
 import { MongooseModule } from '@nestjs/mongoose'
 import { JwtModule } from '@nestjs/jwt'
 import { PassportModule } from '@nestjs/passport'
-import { IEnv } from '../common/interfaces/env.interface'
+import { IEnv } from '@/common/interfaces/env.interface'
 
-import { UserController } from './user.controller'
-import { User, UserSchema } from './schemas/user.schema'
-import { UserService } from './user.service'
+import { UserController } from '@/user/user.controller'
+import { User, UserSchema } from '@/user/schemas/user.schema'
+import { UserService } from '@/user/user.service'
 
-import { CoreMessage } from '../common/messages/core.message'
-import { UserMessage } from '../common/messages/user.message'
+import { CoreMessage } from '@/common/messages/core.message'
+import { UserMessage } from '@/common/messages/user.message'
 
-import { JwtStrategy } from './strategies/jwt.strategy'
-import { LocalStrategy } from './strategies/local.strategy'
-import { PasswordHelper } from '../common/helpers/password.helper'
-import { ExceptionHelper } from '../common/helpers/exception.helper'
+import { JwtStrategy } from '@/user/strategies/jwt.strategy'
+import { LocalStrategy } from '@/user/strategies/local.strategy'
+import { PasswordHelper } from '@/common/helpers/password.helper'
+import { ExceptionHelper } from '@/common/helpers/exception.helper'
 
 @Module({
   imports: [

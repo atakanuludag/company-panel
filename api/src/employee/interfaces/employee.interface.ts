@@ -1,5 +1,5 @@
 import { Document } from 'mongoose'
-import { Gender } from '../../common/interfaces/enums'
+import { Gender } from '@/common/interfaces/enums'
 
 export interface IEmployee extends Document {
   readonly tcNumber: string

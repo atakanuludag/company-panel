@@ -2,15 +2,16 @@ import { HttpStatus, Injectable } from '@nestjs/common'
 import { InjectModel } from '@nestjs/mongoose'
 import { Model, ObjectId } from 'mongoose'
 import { JwtService } from '@nestjs/jwt'
-import { IUser } from '../common/interfaces/user.interface'
-import { IUserEntity } from '../common/interfaces/user.interface'
-import { UserRole } from '../common/interfaces/enums'
-import { User, UserDocument } from './schemas/user.schema'
-import { UserDto } from './dto/user.dto'
-import { UpdateUserDto } from './dto/update-user.dto'
-import { PasswordHelper } from '../common/helpers/password.helper'
-import { ExceptionHelper } from '../common/helpers/exception.helper'
-import { CoreMessage } from '../common/messages/core.message'
+import { IUser } from '@/common/interfaces/user.interface'
+import { IUserEntity } from '@/common/interfaces/user.interface'
+import { UserRole } from '@/common/interfaces/enums'
+import { User, UserDocument } from '@/user/schemas/user.schema'
+import { UserDto } from '@/user/dto/user.dto'
+import { UpdateUserDto } from '@/user/dto/update-user.dto'
+import { PasswordHelper } from '@/common/helpers/password.helper'
+import { ExceptionHelper } from '@/common/helpers/exception.helper'
+import { CoreMessage } from '@/common/messages/core.message'
+import { ILoginResponse } from '@/user/interfaces/login-response.interface'
 
 @Injectable()
 export class UserService {
@@ -22,7 +23,7 @@ export class UserService {
     private readonly coreMessage: CoreMessage,
   ) {}
 
-  async login(user: IUser) {
+  async login(user: IUser): Promise<ILoginResponse> {
     try {
       const payload: IUserEntity = {
         userName: user.userName,

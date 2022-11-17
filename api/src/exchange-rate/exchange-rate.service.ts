@@ -7,18 +7,18 @@ import { HttpService } from '@nestjs/axios'
 import {
   ExchangeRate,
   ExchangeRateDocument,
-} from './schemas/exchange-rate.schema'
-import { ExceptionHelper } from '../common/helpers/exception.helper'
-import { CoreMessage } from '../common/messages/core.message'
-import { IExchangeRate } from './interfaces/exchange-rate.interface'
+} from '@/exchange-rate/schemas/exchange-rate.schema'
+import { ExceptionHelper } from '@/common/helpers/exception.helper'
+import { CoreMessage } from '@/common/messages/core.message'
+import { IExchangeRate } from '@/exchange-rate/interfaces/exchange-rate.interface'
 import {
   DovizType,
   //IDovizObject,
   IDovizResponse,
-} from './interfaces/doviz-api.interface'
+} from '@/exchange-rate/interfaces/doviz-api.interface'
 
-import { ExhangeRateType } from './interfaces/enums'
-import { IEnv } from '../common/interfaces/env.interface'
+import { ExhangeRateType } from '@/exchange-rate/interfaces/enums'
+import { IEnv } from '@/common/interfaces/env.interface'
 
 @Injectable()
 export class ExchangeRateService {

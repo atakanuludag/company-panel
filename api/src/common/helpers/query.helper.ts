@@ -1,5 +1,5 @@
 import { Query } from '@nestjs/common'
-import { IQuery, OrderType } from '../interfaces/query.interface'
+import { IQuery, OrderType } from '@/common/interfaces/query.interface'
 
 export class QueryHelper {
   public constructor() {}

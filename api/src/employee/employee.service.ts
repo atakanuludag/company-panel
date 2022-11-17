@@ -1,22 +1,21 @@
 import { HttpStatus, Injectable } from '@nestjs/common'
 import { InjectModel } from '@nestjs/mongoose'
 import { Model, ObjectId } from 'mongoose'
-import { IEmployee } from './interfaces/employee.interface'
-import { IEmployeePermit } from './interfaces/employee-permit.interface'
-import { IQuery } from '../common/interfaces/query.interface'
-import { IEmployeeList } from './interfaces/employee-list.interface'
-import { Employee, EmployeeDocument } from './schemas/employee.schema'
+import { differenceInYears } from 'date-fns'
+import { IEmployee } from '@/employee/interfaces/employee.interface'
+import { IEmployeePermit } from '@/employee/interfaces/employee-permit.interface'
+import { IQuery } from '@/common/interfaces/query.interface'
+import { IEmployeeList } from '@/employee/interfaces/employee-list.interface'
+import { Employee, EmployeeDocument } from '@/employee/schemas/employee.schema'
 import {
   EmployeePermit,
   EmployeePermitDocument,
-} from './schemas/employee-permit.schema'
-import { EmployeeDto } from './dto/employee.dto'
-import { UpdateEmployeeDto } from './dto/update-employee.dto'
-import { EmployeePermitDto } from './dto/employee-permit.dto'
-import { ExceptionHelper } from '../common/helpers/exception.helper'
-import { CoreMessage } from '../common/messages/core.message'
-
-import { differenceInYears } from 'date-fns'
+} from '@/employee/schemas/employee-permit.schema'
+import { EmployeeDto } from '@/employee/dto/employee.dto'
+import { UpdateEmployeeDto } from '@/employee/dto/update-employee.dto'
+import { EmployeePermitDto } from '@/employee/dto/employee-permit.dto'
+import { ExceptionHelper } from '@/common/helpers/exception.helper'
+import { CoreMessage } from '@/common/messages/core.message'
 
 @Injectable()
 export class EmployeeService {

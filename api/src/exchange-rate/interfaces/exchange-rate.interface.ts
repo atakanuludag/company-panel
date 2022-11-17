@@ -1,4 +1,4 @@
-import { ExhangeRateType } from './enums'
+import { ExhangeRateType } from '@/exchange-rate/interfaces/enums'
 
 export interface IExchangeRate {
   _id?: string

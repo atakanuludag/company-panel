@@ -1,18 +1,18 @@
 import { Module } from '@nestjs/common'
 import { MongooseModule } from '@nestjs/mongoose'
 
-import { EmployeeController } from './employee.controller'
-import { EmployeeService } from './employee.service'
-import { Employee, EmployeeSchema } from './schemas/employee.schema'
+import { EmployeeController } from '@/employee/employee.controller'
+import { EmployeeService } from '@/employee/employee.service'
+import { Employee, EmployeeSchema } from '@/employee/schemas/employee.schema'
 import {
   EmployeePermit,
   EmployeePermitSchema,
-} from './schemas/employee-permit.schema'
+} from '@/employee/schemas/employee-permit.schema'
 
-import { ExceptionHelper } from '../common/helpers/exception.helper'
-import { EmployeeMessage } from '../common/messages/employee.message'
-import { CoreMessage } from '../common/messages/core.message'
-import { QueryHelper } from '../common/helpers/query.helper'
+import { ExceptionHelper } from '@/common/helpers/exception.helper'
+import { EmployeeMessage } from '@/common/messages/employee.message'
+import { CoreMessage } from '@/common/messages/core.message'
+import { QueryHelper } from '@/common/helpers/query.helper'
 
 @Module({
   imports: [

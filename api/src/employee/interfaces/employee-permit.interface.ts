@@ -1,5 +1,5 @@
 import { Document, ObjectId, PopulatedDoc } from 'mongoose'
-import { IEmployee } from './employee.interface'
+import { IEmployee } from '@/employee/interfaces/employee.interface'
 
 export interface IEmployeePermit extends Document {
   readonly employee: ObjectId | PopulatedDoc<IEmployee>

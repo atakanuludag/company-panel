@@ -1,9 +1,9 @@
 import { Controller, Get, HttpStatus, Param } from '@nestjs/common'
 import { ApiOperation, ApiParam, ApiTags } from '@nestjs/swagger'
-import { CityIdParamsDto } from '../common/dto/params.dto'
-import { WeatherService } from './weather.service'
-import { ExceptionHelper } from '../common/helpers/exception.helper'
-import { CoreMessage } from '../common/messages/core.message'
+import { CityIdParamsDto } from '@/common/dto/params.dto'
+import { WeatherService } from '@/weather/weather.service'
+import { ExceptionHelper } from '@/common/helpers/exception.helper'
+import { CoreMessage } from '@/common/messages/core.message'
 
 @ApiTags('Hava Durumu')
 @Controller('weather')

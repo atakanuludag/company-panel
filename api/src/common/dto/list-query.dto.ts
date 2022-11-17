@@ -1,5 +1,5 @@
 import { ApiProperty } from '@nestjs/swagger'
-import { OrderType } from '../interfaces/query.interface'
+import { OrderType } from '@/common/interfaces/query.interface'
 
 export class ListQueryDto {
   @ApiProperty({

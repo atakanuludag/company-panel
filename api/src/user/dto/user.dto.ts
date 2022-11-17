@@ -1,12 +1,6 @@
 import { ApiProperty } from '@nestjs/swagger'
-import {
-  IsNotEmpty,
-  IsString,
-  IsArray,
-  IsOptional,
-  IsEnum,
-} from 'class-validator'
-import { UserRole } from '../../common/interfaces/enums'
+import { IsNotEmpty, IsString, IsOptional, IsEnum } from 'class-validator'
+import { UserRole } from '@/common/interfaces/enums'
 
 export class UserDto {
   @ApiProperty({

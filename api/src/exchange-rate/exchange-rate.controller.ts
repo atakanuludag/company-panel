@@ -1,6 +1,6 @@
 import { Controller, Get } from '@nestjs/common'
 import { ApiOperation, ApiTags } from '@nestjs/swagger'
-import { ExchangeRateService } from './exchange-rate.service'
+import { ExchangeRateService } from '@/exchange-rate/exchange-rate.service'
 
 @ApiTags('Döviz Kurları')
 @Controller('exchange-rate')

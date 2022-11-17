@@ -1,7 +1,7 @@
 import { Controller, Get } from '@nestjs/common'
 import { ApiOperation, ApiTags } from '@nestjs/swagger'
-import { AppService } from './app.service'
-import { IHolidaysCalendar } from './common/interfaces/google-calendar.interface'
+import { AppService } from '@/app.service'
+import { IHolidaysCalendar } from '@/common/interfaces/google-calendar.interface'
 
 @Controller()
 export class AppController {
